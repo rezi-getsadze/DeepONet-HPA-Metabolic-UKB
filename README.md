@@ -4,8 +4,8 @@ This repository contains the code for: **"A Deep Operator Network Surrogate for 
 
 ### Main files
 
-* **`synthetic_data.py`**: generates UKB-shaped synthetic cohorts, Olink CSVs and a synthetic `sweep_results_full.csv`, so everything runs without biobank access.
-* **`t2d_preprocess.py`**: the data pipeline. medication-naive filter (47 drug codes), stress score from the 16 MHQ items, glucose unit conversion, CRP NaN fill, Olink merge and prioritised sampling. writes the three cohorts to `Training Data/`.
+* **`synthetic_data.py`**: generates UKB-shaped synthetic cohorts, Olink CSVs and a synthetic `synthetic_sweep_results_full.csv`, so everything runs without biobank access.
+* **`t2d_preprocess.py`**: the data pipeline. glucose-lowering medication filter (47 drug codes), stress score from the 16 MHQ items, glucose unit conversion, CRP NaN fill, Olink merge and prioritised sampling. writes the three cohorts to `Training Data/`.
 * **`t2d_ode_uncalibrated_v2.py`**: the baseline with population-wide constants, where everyone collapses to one attractor.
 * **`t2d_ode_calibrated_v2.py`**: individualized scaling of glucose uptake and hepatic production on the full cohort.
 * **`t2d_deeponet_v8.py`**: the main script. trains the 5-day and 90-day surrogates, runs the cohort, HbA1c and longitudinal checks, the stability landscape and the ODE spot-check, and builds Figure 2 (`output/panel2.svg`).
@@ -33,7 +33,7 @@ v8 runs twice on purpose. multiseed and the CI script both read v8's cache, and 
 
 ### Data note
 
-No data is included. `synthetic_data.py` writes randomized cohorts with the raw UK Biobank column structure, so all scripts run end to end, but the numbers will not match the paper. Raw UK Biobank data can't be shared due to licensing; access is by application at [ukbiobank.ac.uk](https://www.ukbiobank.ac.uk/). The real sweep output (`sweep_results_full.csv`, 120,000 rows) will be archived on Zenodo on publication.
+No data is included. `synthetic_data.py` writes randomized cohorts with the raw UK Biobank column structure, so all scripts run end to end, but the numbers will not match the paper. Raw UK Biobank data can't be shared due to licensing; access is by application at [ukbiobank.ac.uk](https://www.ukbiobank.ac.uk/). The real sweep output (`sweep_results_full.csv`, 120,000 rows) will be archived on Zenodo on publication. Put it in the repo root and v7 uses it instead of the synthetic one.
 
 ### Installation
 
