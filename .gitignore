@@ -1,0 +1,12 @@
+__pycache__/
+*.pt
+*.npz
+*sweep_results*.csv
+attractor/
+Original Data/
+Training Data/
+cache/
+figures/
+output/
+runtime/
+.DS_Store
